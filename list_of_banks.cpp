@@ -41,5 +41,5 @@ banco* list_of_banks::get_bank(string name)
             return &a;
         }
     }
-
+	return nullptr;
 }

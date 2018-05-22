@@ -1,7 +1,7 @@
 #ifndef LIST_OF_BANKS_H
 #define LIST_OF_BANKS_H
 #include <list>
-#include <banco.h>
+#include "banco.h"
 
 class list_of_banks
 {

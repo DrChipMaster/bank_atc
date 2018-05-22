@@ -1,6 +1,6 @@
-#include <QCoreApplication>
-#include <banco.h>
-#include <corrency.h>
+//#include <QCoreApplication>
+#include "banco.h"
+#include "corrency.h"
 #include "list_of_banks.h"
 #include "pessoa.h"
 #include "account.h"
@@ -19,6 +19,7 @@ int main()
     float taxs[3];
      float transactions[]={0,0,0};
     list_of_banks Portugal("Portugal");
+	bank = &banco("bpi", taxs, transactions, 10);
     init_new_world(bank, &name ,taxs, &Portugal);
     bool modo_geral=1, modo_banco=0,modo_conta=0;
     while(modo_geral)
