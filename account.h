@@ -20,12 +20,12 @@ struct movements
 
 class Account
    {
+	iban iban_acount;
     float saldo;
     int type;
-    pessoa & Owner;
-
+	
 public:
-
+	pessoa & Owner;
 	bool blocked;
     Account(int numero,pessoa &owner1,float saldo_ini=0,int type=0);
     bool deposit(float valor);
@@ -33,6 +33,7 @@ public:
     bool block_account(bool block_type);
     bool transaction(Account &destination,float value);
     bool change_type(int type);
+	int get_num_account() { return iban_acount.num_account; }
 	int get_type() { return type; }
 	bool fee(float valor);
 	float get_saldo() { return saldo; }

@@ -1,7 +1,7 @@
 #include "pessoa.h"
 
 
-pessoa::pessoa(string name, int number_cc, int born_date, string adress, int zip_code[2], int phone_number = 0, string e_mail = "false"):name(name), born_date(born_date)
+pessoa::pessoa(string name, int number_cc, int born_date[2], string adress, int zip_code[2], int phone_number = 0, string e_mail = "false"):name(name)
 {
 	this->number_cc = number_cc;
 	this->adress = adress;
@@ -9,6 +9,8 @@ pessoa::pessoa(string name, int number_cc, int born_date, string adress, int zip
 	this->zip_code[1] = zip_code[1];
 	this->phone_number = phone_number;
 	this->e_mail = e_mail;
+	this->born_date[0] = born_date[0];
+	this->born_date[1] = born_date[1];
 }
 
 bool pessoa::update_adress(string new_adress, int new_zip_code[2])
