@@ -49,8 +49,8 @@ float banco::monthly_payment()
 
 void banco::add_account()
 {
-
 	accounts.push_back(creat_account_io());
+	num_last_account++;
 }
 
 float banco::calculate_balance()
