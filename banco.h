@@ -8,6 +8,7 @@ using namespace std;
 #pragma once
 class banco
 {
+	int num_last_account;
 	list<Account> accounts;
 	int number;
 	long int balance;
@@ -17,7 +18,7 @@ class banco
 public:
     banco();
 	const string name;
-	banco(string name, float tax_month[3], float tax_transaction[3]);
+	banco(string name, float tax_month[3], float tax_transaction[3], int num);
 	void update_accout_type();
 	float monthly_payment();
 	void add_account();

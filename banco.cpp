@@ -7,12 +7,14 @@
 
 using namespace std;
 
-banco::banco(string name, float tax_month[3], float tax_transaction[3]):name(name)
+banco::banco(string name, float tax_month[3], float tax_transaction[3], int num):name(name)
 {
+	num_last_account = 0;
 	for (int i=0; i<3; i++)
 	{ 
 		this->taxas_monthly_payment[i] = tax_month[i];
 		this->taxas_transaction[i] = tax_transaction[i];
+		this->number = num;
 	}
 	
 }
@@ -75,6 +77,7 @@ bool banco::close_account(int num)
 
 Account banco::creat_account_io()
 {
+	iban newiban;
 	string nome;
 	int numero_cc;
 	int born_date[2];
@@ -100,7 +103,10 @@ Account banco::creat_account_io()
 	pessoa person(nome, numero_cc, born_date, address, zip_code, phone_number, e_mail);
 	cout << "Qual o tipo de conta que deseja abrir" << endl;
 	cin >> type;
-	Account new_account(0, person, 0, type);
+	newiban.num_account = num_last_account + 1;
+	newiban.num_bank = number;
+	newiban.nome = "PT50";
+	Account new_account(newiban, person, 0, type);
 	return new_account;
 }
 

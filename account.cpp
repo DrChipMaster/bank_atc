@@ -1,10 +1,10 @@
 #include "account.h"
 
-Account::Account(int numero,pessoa &owner1,float saldo_ini,int type):numero(numero), Owner(owner1)
+Account::Account(iban newiban ,pessoa &owner1,float saldo_ini,int type):numero(numero), Owner(owner1)
 {
     this->saldo=saldo_ini;
     this->type=type;
-
+	iban_acount = newiban;
 
 }
 

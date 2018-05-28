@@ -7,8 +7,9 @@
 
 class list_of_banks
 {
-list<banco> banks;
-string name;
+	int num_last_bank;
+	list<banco> banks;
+	string name;
 public:
 	banco create_banco_io();
     bool add_bank();

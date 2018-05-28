@@ -27,7 +27,7 @@ class Account
 public:
 	pessoa & Owner;
 	bool blocked;
-    Account(int numero,pessoa &owner1,float saldo_ini=0,int type=0);
+	Account(iban  newiban, pessoa &owner1, float saldo_ini = 0, int type = 0);
     bool deposit(float valor);
     bool withdraw(float valor);
     bool block_account(bool block_type);
