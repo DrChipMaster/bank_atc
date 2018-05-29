@@ -22,7 +22,8 @@ int main()
 	int op;
     banco *bank;
     list_of_banks Portugal("Portugal");
-   while (1)
+    bool program_on=1;
+   while (program_on)
    {
 	   switch (choose_op())
 	   {
@@ -33,7 +34,7 @@ int main()
 			   op = choose_op_list();
 			   menu_list_banks(Portugal, op);
 		   }
-		}
+        }break;
 	   case 2:
 	   { op = 0;
 	   do {
@@ -46,8 +47,17 @@ int main()
 		    op = choose_op_bank();
 			menu_bank(bank, op);
 	   }
-	   }
+       }break;
+        case 3:
+
+
+           break;
+         case 4:
+           program_on=0;
+           break;
+
 	   default:
+           cout<<"Numero de operaçao invalida!"<<endl;
 		   break;
 	   }
    }
@@ -56,18 +66,34 @@ int main()
 
 void menu_list_banks(list_of_banks list, int op)
 {
+ bool in_menu=1;
+ while(in_menu)
+    {
 	switch(op)
 	{
 	case 1:
-	{ list.add_bank(); }
+    { list.add_bank(); }
+        break;
 	case 2:
 	{ list.remove_bank("pp"); }
+        break;
 	case 3:
 	{ list.get_bank("pp"); }
+        break;
+    case 4:
+        in_menu=0;
+        break;
 	default:
+        in_menu=0;
+        cout<<"Opção invalida, tente novamente"<<endl;
 		break;
 	}
+ }
 }
+
+
+
+
 int choose_op_list()
 {
 	int op;
@@ -80,34 +106,31 @@ int choose_op_list()
 }
 void menu_bank(banco *bank, int op)
 {
-	switch (op)
-	{
-	case 1:
-	{ bank->add_account(); }
-	case 2:
-	{int num;
-	cout << "numero de conta" << endl;
-	cin >> num;
-	bank->close_account(num);
-	}
-	case 3:
-	{ bank->update_accout_type(); }
-	case 4:
-	{bank->calculate_balance(); }
-	default:
-		break;
-	}
-}
-int choose_op_bank()
-{
-	int op;
-	cout << " 1 -> Criar uma nova conta" << endl;
-	cout << " 2 -> Remover uma conta" << endl;
-	cout << " 3 -> Atualiza tipo de contas" << endl;
-	cout << " 4 -> Calcular balanco" << endl;
-	cout << " 5 -> Sair" << endl;
-	cin >> op;
-	return op;
+    bool menu_bank1=1;
+    while (menu_bank1)
+    {
+        switch (op)
+         {
+            case 1:
+             bank->add_account();
+            break;
+            case 2:
+                int num;
+                cout << "numero de conta" << endl;
+                cin >> num;
+                bank->close_account(num);
+            break;
+            case 3:
+                bank->update_accout_type();
+             break;
+            case 4:
+                bank->calculate_balance();
+             break;
+            default:
+                cout<<"Operaçao invalida, Tente novamente"<<endl;
+                break;
+        }
+    }
 }
 
 void menu_ATM(Account conta, int op)
@@ -131,6 +154,24 @@ void menu_ATM(Account conta, int op)
 		break;
 	}
 }
+
+
+
+int choose_op_bank()
+{
+    int op;
+    cout << " 1 -> Criar uma nova conta  ||";
+    cout << " 2 -> Remover uma conta  ||";
+    cout << " 3 -> Atualiza tipo de contas  ||";
+    cout << " 4 -> Calcular balanco ||";
+    cout << " 5 -> Sair" << endl;
+    cin >> op;
+    return op;
+}
+
+
+
+
 int choose_op_ATM()
 {
 	int op;
@@ -144,10 +185,10 @@ int choose_op_ATM()
 int choose_op()
 {
 	int op;
-	cout << " 1 ->	menu Conjunto de bancos" << endl;
-	cout << " 2 -> menu banco" << endl;
-	cout << " 3 -> menu ATM" << endl;
-	cout << " 4 -> Sair" << endl;
+    cout << " 1 ->	menu Conjunto de bancos ||";
+    cout << " 2 -> menu banco ||";
+    cout << " 3 -> menu ATM  ||";
+    cout << " 4 -> Sair" << endl;
 	cin >> op;
 	return op;
 }

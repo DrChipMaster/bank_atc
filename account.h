@@ -1,7 +1,9 @@
 #ifndef ACCOUNT_H
 #define ACCOUNT_H
 #include "pessoa.h"
+ #include <list>
 
+using namespace std;
 
 struct iban{
     string nome;
@@ -9,26 +11,29 @@ struct iban{
     int num_account;
 };
 
-struct movements
+struct movement
 {
    iban from;
    iban destynation;
-   int transaction_type;
-   int value;
+   string transaction_type;
+   float value;
 
 };
 
 class Account
    {
-	iban iban_acount;
+    iban iban_acount;
     float saldo;
     int type;
-	
+
+    list<movement> movements;
+
 public:
-	pessoa & Owner;
+    pessoa & Owner;
 	bool blocked;
 	Account(iban  newiban, pessoa &owner1, float saldo_ini = 0, int type = 0);
     bool deposit(float valor);
+    bool deposit(float valor,movement mov);
     bool withdraw(float valor);
     bool block_account(bool block_type);
     bool transaction(Account &destination,float value);
@@ -38,6 +43,7 @@ public:
 	bool fee(float valor);
 	float get_saldo() { return saldo; }
     const int numero;
+    iban get_iban();
     
 };
 

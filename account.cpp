@@ -12,6 +12,21 @@ bool Account::deposit(float valor)
 {
     if(valor * !blocked >= 1)
     {
+        movements.push_back(movement{iban_acount,iban_acount,"deposit",valor});
+        saldo += valor;
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
+bool Account::deposit(float valor,movement mov)
+{
+    if(valor * !blocked >= 1)
+    {
+        movements.push_back(mov);
         saldo += valor;
         return true;
     }
@@ -24,9 +39,9 @@ bool Account::withdraw(float valor)
 {
     if(valor>=1 && valor <= saldo && !blocked)
     {
+        movements.push_back(movement{iban_acount,iban_acount,"withaw",valor});
         saldo-=valor;
         return true;
-
     }
     else return false;
 }
@@ -45,8 +60,10 @@ bool Account::block_account(bool Block_type)
  {
 if(!destination.blocked && !blocked && value>1 && value <= saldo)
 {
+    movement mov={iban_acount,destination.get_iban(),"withaw",value};
+    movements.push_back(mov);
     saldo-=value;
-    if(destination.deposit(value))return true;
+    if(destination.deposit(value,mov))return true;
     return false;
 }
 else return false;
@@ -69,6 +86,11 @@ else return false;
 		 return false;
 	 return true;
  }
+ iban Account::get_iban()
+ {
+     return iban_acount;
+ }
+
 
 
 
